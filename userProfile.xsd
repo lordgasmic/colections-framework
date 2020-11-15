@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="gsa-template">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="header"/>
+        <xs:element maxOccurs="unbounded" ref="item-descriptor"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="header">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name"/>
+        <xs:element ref="author"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="author" type="xs:NCName"/>
+  <xs:element name="item-descriptor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="attribute"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="table"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="property"/>
+      </xs:sequence>
+      <xs:attribute name="cache-mode" type="xs:NCName"/>
+      <xs:attribute name="display-name"/>
+      <xs:attribute name="display-name-resource" type="xs:NCName"/>
+      <xs:attribute name="id-space-name" type="xs:NCName"/>
+      <xs:attribute name="item-cache-size" type="xs:integer"/>
+      <xs:attribute name="item-expire-timeout" type="xs:integer"/>
+      <xs:attribute name="last-modified-property" type="xs:NCName"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="query-cache-size" type="xs:integer"/>
+      <xs:attribute name="sub-type-value" type="xs:NCName"/>
+      <xs:attribute name="super-type" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="table">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="property"/>
+      </xs:sequence>
+      <xs:attribute name="id-column-name" type="xs:NCName"/>
+      <xs:attribute name="multi-column-name" type="xs:NCName"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="type" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="attribute">
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="value" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="property">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="attribute"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="option"/>
+      </xs:sequence>
+      <xs:attribute name="cache-mode" type="xs:NCName"/>
+      <xs:attribute name="cascade" type="xs:NCName"/>
+      <xs:attribute name="category-resource" type="xs:NCName"/>
+      <xs:attribute name="column-name" type="xs:NCName"/>
+      <xs:attribute name="component-item-type" type="xs:NCName"/>
+      <xs:attribute name="data-type" type="xs:NCName"/>
+      <xs:attribute name="default" type="xs:boolean"/>
+      <xs:attribute name="description"/>
+      <xs:attribute name="display-name-resource" type="xs:NCName"/>
+      <xs:attribute name="editor-class"/>
+      <xs:attribute name="item-type" type="xs:NCName"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="property-type"/>
+      <xs:attribute name="repository"/>
+      <xs:attribute name="required" type="xs:boolean"/>
+      <xs:attribute name="xml-combine" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="option">
+    <xs:complexType>
+      <xs:attribute name="code" use="required" type="xs:integer"/>
+      <xs:attribute name="value" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
